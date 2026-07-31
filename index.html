@@ -248,7 +248,126 @@
         border-top: 1px solid var(--line);
       }
     }
-  </style>
+  
+.bookshelf {
+  position: relative;
+  padding: 90px 0 110px;
+}
+
+.bookshelf-heading {
+  max-width: 760px;
+  margin-bottom: 38px;
+}
+
+.bookshelf-heading h3 {
+  margin: 0;
+  font-family: "Archivo Black", Arial, sans-serif;
+  font-size: clamp(38px, 5vw, 72px);
+  line-height: .98;
+  letter-spacing: -.02em;
+}
+
+.volumes {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  align-items: end;
+}
+
+.volume {
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 24px;
+  border: 1px solid var(--line);
+  background:
+    linear-gradient(180deg, rgba(244,197,66,.05), rgba(244,197,66,.12)),
+    #11100d;
+  box-shadow:
+    inset 10px 0 20px rgba(255,255,255,.015),
+    inset -10px 0 20px rgba(0,0,0,.22),
+    0 24px 45px rgba(0,0,0,.22);
+  transition: transform .2s ease, border-color .2s ease;
+}
+
+.volume:nth-child(2) { min-height: 330px; }
+.volume:nth-child(3) { min-height: 285px; }
+.volume:nth-child(4) { min-height: 315px; }
+
+.volume:hover {
+  transform: translateY(-8px);
+  border-color: var(--gold);
+}
+
+.volume-number {
+  margin-bottom: auto;
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .18em;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+.volume h4 {
+  margin: 24px 0 10px;
+  font-family: "Archivo Black", Arial, sans-serif;
+  font-size: 28px;
+  line-height: 1;
+}
+
+.volume p {
+  margin: 0;
+  color: #b8aa8c;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.volume.mystery {
+  background:
+    radial-gradient(circle at 70% 15%, rgba(244,197,66,.16), transparent 38%),
+    linear-gradient(180deg, rgba(244,197,66,.03), rgba(255,255,255,.015)),
+    #0d0c0a;
+}
+
+.shelf-line {
+  height: 18px;
+  margin-top: 14px;
+  border: 1px solid rgba(244,197,66,.35);
+  background: linear-gradient(180deg, #6a4a08, #2c1d05 55%, #0e0902);
+  box-shadow: 0 18px 35px rgba(0,0,0,.45);
+}
+
+@media (max-width: 900px) {
+  .volumes { grid-template-columns: repeat(2, 1fr); }
+
+  .volume,
+  .volume:nth-child(2),
+  .volume:nth-child(3),
+  .volume:nth-child(4) {
+    min-height: 260px;
+  }
+}
+
+@media (max-width: 560px) {
+  .bookshelf { padding: 70px 0 90px; }
+  .volumes { grid-template-columns: 1fr; }
+
+  .volume,
+  .volume:nth-child(2),
+  .volume:nth-child(3),
+  .volume:nth-child(4) {
+    min-height: 220px;
+  }
+
+  .volume-number {
+    writing-mode: horizontal-tb;
+    transform: none;
+  }
+}
+
+</style>
 </head>
 
 <body>
@@ -306,7 +425,43 @@
         <img class="hero-logo" src="logo.png" alt="Madilda gold character">
       </div>
     </section>
-  </main>
+  
+<section class="bookshelf" id="bookshelf">
+  <div class="bookshelf-heading">
+    <p class="eyebrow">THE BOOKSHELF</p>
+    <h3>EVERY MEME HAS CHAPTERS.</h3>
+  </div>
+
+  <div class="volumes">
+    <article class="volume">
+      <span class="volume-number">VOLUME I</span>
+      <h4>LAUNCH</h4>
+      <p>The book opened on Solana.</p>
+    </article>
+
+    <article class="volume">
+      <span class="volume-number">VOLUME II</span>
+      <h4>COMMUNITY</h4>
+      <p>Readers became holders.</p>
+    </article>
+
+    <article class="volume">
+      <span class="volume-number">VOLUME III</span>
+      <h4>MEMES</h4>
+      <p>The story escaped the page.</p>
+    </article>
+
+    <article class="volume mystery">
+      <span class="volume-number">VOLUME IV</span>
+      <h4>???</h4>
+      <p>To be written.</p>
+    </article>
+  </div>
+
+  <div class="shelf-line" aria-hidden="true"></div>
+</section>
+
+</main>
 
   <script>
     async function copyContract() {
