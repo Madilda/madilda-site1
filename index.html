@@ -3,11 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Madilda — That's a movie? Yeah, it's a book too.">
+  <meta
+    name="description"
+    content="Madilda — That's a movie? Yeah, it's a book too."
+  >
+
   <title>Madilda</title>
+
   <link rel="icon" href="logo.png">
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
   <div class="noise"></div>
 
@@ -16,20 +22,96 @@
       <div class="copy">
         <p class="eyebrow">ON SOLANA</p>
 
-        <h1>THAT'S A<br>MOVIE?</h1>
-        <h2>YEAH, IT'S A<br>BOOK TOO.</h2>
+        <h1>
+          THAT'S A<br>
+          MOVIE?
+        </h1>
+
+        <h2>
+          YEAH, IT'S A<br>
+          BOOK TOO.
+        </h2>
 
         <div class="buttons">
-          <a class="button" href="https://x.com/MadildaCoin" target="_blank" rel="noopener noreferrer">X</a>
-          <a class="button" href="https://t.me/MadildaPortal" target="_blank" rel="noopener noreferrer">Telegram</a>
+          <a
+            class="button primary"
+            href="https://raydium.io/launchpad/token/?mint=6N1BFBPB8T6JcsB3krc4fCynkBu9VZYfmLWFXwrcJray"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Buy on Raydium
+          </a>
+
+          <a
+            class="button"
+            href="https://x.com/MadildaCoin"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            X
+          </a>
+
+          <a
+            class="button"
+            href="https://t.me/MadildaPortal"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Telegram
+          </a>
+        </div>
+
+        <div class="contract">
+          <p class="contract-label">CONTRACT ADDRESS</p>
+
+          <div class="contract-row">
+            <code id="contract-address">
+              6N1BFBPB8T6JcsB3krc4fCynkBu9VZYfmLWFXwrcJray
+            </code>
+
+            <button
+              type="button"
+              class="copy-button"
+              onclick="copyContract()"
+            >
+              Copy
+            </button>
+          </div>
+
+          <p id="copy-status" class="copy-status" aria-live="polite"></p>
         </div>
       </div>
 
       <div class="visual">
         <div class="halo"></div>
-        <img class="hero-logo" src="logo.png" alt="Madilda gold character">
+
+        <img
+          class="hero-logo"
+          src="logo.png"
+          alt="Madilda gold character"
+        >
       </div>
     </section>
   </main>
+
+  <script>
+    async function copyContract() {
+      const contract =
+        "6N1BFBPB8T6JcsB3krc4fCynkBu9VZYfmLWFXwrcJray";
+
+      const status = document.getElementById("copy-status");
+
+      try {
+        await navigator.clipboard.writeText(contract);
+        status.textContent = "Copied.";
+      } catch (error) {
+        status.textContent = "Copy failed — select the address manually.";
+      }
+
+      window.setTimeout(() => {
+        status.textContent = "";
+      }, 2000);
+    }
+  </script>
 </body>
 </html>
