@@ -1,228 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;800&display=swap');
+:root { --bg:#090806; --text:#fff8e8; --gold:#f4c542; --line:rgba(244,197,66,.28); }
+* { box-sizing:border-box; }
+html,body { min-height:100%; }
+body { margin:0; background:var(--bg); color:var(--text); font-family:Inter,Arial,sans-serif; overflow-x:hidden; }
+button,a { -webkit-tap-highlight-color:transparent; }
+.noise { position:fixed; inset:0; pointer-events:none; opacity:.045; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.75'/%3E%3C/svg%3E"); }
+main { max-width:1280px; margin:0 auto; padding:0 48px; }
+.hero { min-height:100vh; display:grid; grid-template-columns:1.05fr .95fr; align-items:center; gap:48px; }
+.copy { position:relative; z-index:2; }
+.eyebrow { margin:0 0 24px; color:var(--gold); font-size:17px; font-weight:800; letter-spacing:.2em; }
+h1,h2 { margin:0; font-family:"Archivo Black",Arial,sans-serif; line-height:.92; letter-spacing:-.02em; }
+h1 { font-size:clamp(68px,8vw,124px); }
+h2 { margin-top:20px; color:var(--gold); font-size:clamp(48px,6vw,88px); }
+.buttons { display:flex; flex-wrap:wrap; gap:12px; margin-top:32px; }
+.button { min-width:118px; padding:14px 20px; border:1px solid var(--line); color:var(--text); text-align:center; text-decoration:none; text-transform:uppercase; font-size:13px; font-weight:800; letter-spacing:.03em; transition:.2s ease; }
+.button.primary { background:var(--gold); border-color:var(--gold); color:#171006; }
+.button:hover { background:var(--gold); border-color:var(--gold); color:#171006; transform:translateY(-2px); }
+.button:focus-visible,.copy-button:focus-visible { outline:3px solid rgba(244,197,66,.45); outline-offset:3px; }
+.contract { max-width:760px; margin-top:34px; }
+.contract-label { margin:0 0 11px; color:var(--gold); font-size:12px; font-weight:800; letter-spacing:.18em; }
+.contract-card { display:flex; align-items:stretch; overflow:hidden; border:1px solid rgba(244,197,66,.35); background:linear-gradient(135deg,rgba(244,197,66,.08),rgba(255,255,255,.015)); box-shadow:0 16px 45px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.04); }
+.contract-text { min-width:0; flex:1; display:flex; flex-direction:column; gap:7px; padding:15px 18px; }
+.contract-network { color:var(--gold); font-size:10px; font-weight:800; letter-spacing:.18em; }
+.contract-text code { color:var(--text); font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace; font-size:13px; line-height:1.45; overflow-wrap:anywhere; word-break:break-word; }
+.copy-button { min-width:155px; display:inline-flex; align-items:center; justify-content:center; gap:9px; padding:0 20px; border:0; border-left:1px solid rgba(244,197,66,.35); background:var(--gold); color:#171006; font:inherit; font-size:12px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; cursor:pointer; transition:.2s ease; }
+.copy-button:hover { filter:brightness(1.08); }
+.copy-button:active { transform:scale(.98); }
+.copy-icon { font-size:17px; line-height:1; }
+.copy-status { min-height:18px; margin:8px 0 0; color:var(--gold); font-size:12px; }
+.visual { min-height:620px; display:grid; place-items:center; position:relative; }
+.halo { width:520px; height:520px; position:absolute; border-radius:50%; background:radial-gradient(circle,rgba(244,197,66,.30),transparent 68%); filter:blur(18px); }
+.hero-logo { width:min(100%,520px); position:relative; z-index:1; mix-blend-mode:screen; animation:float 4s ease-in-out infinite; }
+@keyframes float { 0%,100%{transform:translateY(0) rotate(-1deg)} 50%{transform:translateY(-14px) rotate(1deg)} }
+@media (max-width:850px) { main{padding:0 24px}.hero{grid-template-columns:1fr;gap:20px;padding:70px 0 40px}.visual{min-height:360px;order:-1}.hero-logo{width:min(86vw,390px)}.halo{width:340px;height:340px}h1{font-size:clamp(54px,16vw,82px)}h2{font-size:clamp(38px,11vw,62px)} }
+@media (max-width:650px) { .contract-card{flex-direction:column}.copy-button{width:100%;min-height:48px;border-left:0;border-top:1px solid rgba(244,197,66,.35)} }
 
-:root {
-  --bg: #090806;
-  --text: #fff8e8;
-  --gold: #f4c542;
-  --line: rgba(244,197,66,.28);
-}
-
-* { box-sizing: border-box; }
-
-html, body { min-height: 100%; }
-
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font-family: Inter, sans-serif;
-  overflow-x: hidden;
-}
-
-.noise {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  opacity: .045;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.75'/%3E%3C/svg%3E");
-}
-
-main {
-  max-width: 1280px;
-  margin: auto;
-  padding: 0 48px;
-}
-
-.hero {
-  min-height: 100vh;
-  display: grid;
-  grid-template-columns: 1.05fr .95fr;
-  align-items: center;
-  gap: 48px;
-}
-
-.eyebrow {
-  color: var(--gold);
-  font-weight: 800;
-  letter-spacing: .20em;
-  font-size: 17px;
-  margin: 0 0 24px;
-}
-
-h1, h2 {
-  font-family: "Archivo Black", sans-serif;
-  margin: 0;
-  line-height: .92;
-  letter-spacing: -.02em;
-}
-
-h1 {
-  font-size: clamp(68px, 8vw, 124px);
-}
-
-h2 {
-  font-size: clamp(48px, 6vw, 88px);
-  color: var(--gold);
-  margin-top: 20px;
-}
-
-.buttons {
-  display: flex;
-  gap: 12px;
-  margin-top: 32px;
-}
-
-.button {
-  min-width: 118px;
-  padding: 14px 20px;
-  border: 1px solid var(--line);
-  color: var(--text);
-  text-decoration: none;
-  font-weight: 800;
-  text-transform: uppercase;
-  font-size: 13px;
-  text-align: center;
-  transition: .2s ease;
-}
-
-.button:hover {
-  background: var(--gold);
-  color: #171006;
-  border-color: var(--gold);
-  transform: translateY(-2px);
-}
-
-.visual {
-  min-height: 620px;
-  display: grid;
-  place-items: center;
-  position: relative;
-}
-
-.halo {
-  width: 520px;
-  height: 520px;
-  position: absolute;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(244,197,66,.30), transparent 68%);
-  filter: blur(18px);
-}
-
-.hero-logo {
-  width: min(100%, 520px);
-  position: relative;
-  z-index: 1;
-  mix-blend-mode: screen;
-  animation: float 4s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0) rotate(-1deg); }
-  50% { transform: translateY(-14px) rotate(1deg); }
-}
-
-@media (max-width: 850px) {
-  main { padding: 0 24px; }
-
-  .hero {
-    grid-template-columns: 1fr;
-    padding: 70px 0 40px;
-    gap: 20px;
-  }
-
-  .visual {
-    min-height: 360px;
-    order: -1;
-  }
-
-  .hero-logo {
-    width: min(86vw, 390px);
-  }
-
-  .halo {
-    width: 340px;
-    height: 340px;
-  }
-
-  h1 {
-    font-size: clamp(54px, 16vw, 82px);
-  }
-
-  h2 {
-    font-size: clamp(38px, 11vw, 62px);
-  }
-
-  .buttons {
-    flex-wrap: wrap;
-  }
-}
-.button.primary {
-  background: var(--gold);
-  color: #171006;
-  border-color: var(--gold);
-}
-
-.contract {
-  margin-top: 28px;
-  max-width: 720px;
-}
-
-.contract-label {
-  margin: 0 0 10px;
-  color: var(--gold);
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.16em;
-}
-
-.contract-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.contract-row code {
-  flex: 1;
-  padding: 13px 15px;
-  border: 1px solid var(--line);
-  color: var(--text);
-  background: rgba(255, 255, 255, 0.025);
-  font-family: monospace;
-  font-size: 13px;
-  overflow-wrap: anywhere;
-}
-
-.copy-button {
-  padding: 13px 18px;
-  border: 1px solid var(--gold);
-  background: transparent;
-  color: var(--gold);
-  font: inherit;
-  font-size: 13px;
-  font-weight: 800;
-  text-transform: uppercase;
-  cursor: pointer;
-}
-
-.copy-button:hover {
-  background: var(--gold);
-  color: #171006;
-}
-
-.copy-status {
-  min-height: 20px;
-  margin: 8px 0 0;
-  color: var(--gold);
-  font-size: 12px;
-}
-
-@media (max-width: 650px) {
-  .contract-row {
-    align-items: stretch;
-    flex-direction: column;
-  }
-
-  .copy-button {
-    width: 100%;
-  }
-}
