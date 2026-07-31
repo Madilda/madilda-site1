@@ -27,11 +27,3 @@ h2 { margin-top:20px; color:var(--gold); font-size:clamp(48px,6vw,88px); }
 .copy-button:hover { filter:brightness(1.08); }
 .copy-button:active { transform:scale(.98); }
 .copy-icon { font-size:17px; line-height:1; }
-.copy-status { min-height:18px; margin:8px 0 0; color:var(--gold); font-size:12px; }
-.visual { min-height:620px; display:grid; place-items:center; position:relative; }
-.halo { width:520px; height:520px; position:absolute; border-radius:50%; background:radial-gradient(circle,rgba(244,197,66,.30),transparent 68%); filter:blur(18px); }
-.hero-logo { width:min(100%,520px); position:relative; z-index:1; mix-blend-mode:screen; animation:float 4s ease-in-out infinite; }
-@keyframes float { 0%,100%{transform:translateY(0) rotate(-1deg)} 50%{transform:translateY(-14px) rotate(1deg)} }
-@media (max-width:850px) { main{padding:0 24px}.hero{grid-template-columns:1fr;gap:20px;padding:70px 0 40px}.visual{min-height:360px;order:-1}.hero-logo{width:min(86vw,390px)}.halo{width:340px;height:340px}h1{font-size:clamp(54px,16vw,82px)}h2{font-size:clamp(38px,11vw,62px)} }
-@media (max-width:650px) { .contract-card{flex-direction:column}.copy-button{width:100%;min-height:48px;border-left:0;border-top:1px solid rgba(244,197,66,.35)} }
- 
