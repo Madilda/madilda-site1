@@ -156,3 +156,73 @@ h2 {
     flex-wrap: wrap;
   }
 }
+.button.primary {
+  background: var(--gold);
+  color: #171006;
+  border-color: var(--gold);
+}
+
+.contract {
+  margin-top: 28px;
+  max-width: 720px;
+}
+
+.contract-label {
+  margin: 0 0 10px;
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.contract-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.contract-row code {
+  flex: 1;
+  padding: 13px 15px;
+  border: 1px solid var(--line);
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.025);
+  font-family: monospace;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.copy-button {
+  padding: 13px 18px;
+  border: 1px solid var(--gold);
+  background: transparent;
+  color: var(--gold);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.copy-button:hover {
+  background: var(--gold);
+  color: #171006;
+}
+
+.copy-status {
+  min-height: 20px;
+  margin: 8px 0 0;
+  color: var(--gold);
+  font-size: 12px;
+}
+
+@media (max-width: 650px) {
+  .contract-row {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .copy-button {
+    width: 100%;
+  }
+}
